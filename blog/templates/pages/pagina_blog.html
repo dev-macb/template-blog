@@ -1,1 +1,25 @@
 <h1>Blog</h1>
+
+  <!-- Exibir postagens para usuários básicos -->
+  <div>
+    <h2>Postagens para Usuários Básicos</h2>
+    {% for postagem in postagens_basicas %}
+      <div>
+        <h3>{{ postagem.titulo }}</h3>
+        <p>{{ postagem.conteudo }}</p>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Exibir postagens para usuários premium -->
+  {% if postagens_premium %}
+    <div>
+      <h2>Postagens para Usuários Premium</h2>
+      {% for postagem in postagens_premium %}
+        <div>
+          <h3>{{ postagem.titulo }}</h3>
+          <p>{{ postagem.conteudo }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}

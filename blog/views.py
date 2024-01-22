@@ -1,8 +1,10 @@
 from django.shortcuts import render
+from .models import Postagem
 
 
 def pagina_inicio(request):
-    return render(request, 'pages/pagina_inicio.html', {})
+    ultimas_postagens = Postagem.objects.order_by('-criado_em')[:3]
+    return render(request, 'pages/pagina_inicio.html', {'ultimas_postagens': ultimas_postagens})
 
 
 def pagina_sobre(request):
@@ -14,7 +16,14 @@ def pagina_servicos(request):
 
 
 def pagina_blog(request):
-    return render(request, 'pages/pagina_blog.html', {})
+    postagens_basicas = Postagem.objects.filter(premium=False)
+
+    if request.user.is_authenticated and request.user.usuario.premium:
+        postagens_premium = Postagem.objects.filter(premium=True)
+    else:
+        postagens_premium = []
+
+    return render(request, 'pages/pagina_blog.html', {'postagens_basicas': postagens_basicas, 'postagens_premium': postagens_premium})
 
 
 def pagina_contato(request):

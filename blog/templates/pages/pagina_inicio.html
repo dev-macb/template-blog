@@ -1,1 +1,9 @@
-<h1>Início</h1>
+<h1>Página Inicial</h1>
+
+<!-- Adicione aqui o código para o banner e o carrossel -->
+
+<h2>Últimas Postagens:</h2>
+{% for postagem in ultimas_postagens %}
+    <h3>{{ postagem.titulo }}</h3>
+    <p>{{ postagem.mensagem }}</p>
+{% endfor %}
