@@ -6,21 +6,69 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="{% static 'styles/base.css' %}">
-
+        
         <title>Template Blog</title>
     </head>
 
     <body>
-        <header>
-            CABEÇALHO
+        <header class="cabecalho-conteiner">
+            <div class="cabecalho-conteudo">
+                <a href="/">Template Website</a>
+                <nav>
+                    <ul>
+                        <li><a href="/">Início</a></li>
+                        <li><a href="/sobre">Sobre</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/contato">Contato</a></li>
+                        <li><a href="/entrar">Entrar</a></li>
+                    </ul>
+                </nav>
+            </div>
         </header>
 
-        <main>
-            {% block page_content %}{% endblock page_content %}
+        <main class="principal-conteiner">
+            <div class="principal-conteudo">
+                {% block page_content %}
+                {% endblock page_content %}
+            </div>
         </main>
         
-        <header>
-            RODAPE
-        </header>
+        <footer class="rodape-conteiner">
+            <div class="rodape-conteudo">
+                <div>
+                    <svg width="81" height="93" viewBox="0 0 270 310" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M135 0L269.5 76.5L270 232L162 171L191 156L243 186V95L163 48V108L135 125V0Z" fill="#0D2032"/>
+                        <path d="M27 95L135 155.706V279L55 232L80 216.5L108 232.706V171L54.5 139.706V169.046L27 185V95Z" fill="#0D2032"/>
+                        <path d="M107 48V78L81.5 92.5L107 109L135 125L188.5 92.5L163 78V48L243 95L135 156L27 95L107 48Z" fill="#90B7DE"/>
+                        <path d="M108 171V200L55 232L135 279L217 232L162 200V171L270 232L135.5 309.5L0 232L108 171Z" fill="#90B7DE"/>
+                        <path d="M0 77L135 0V125L107 109V48L27 95V185L79.5 154.5L108 171L0 232V77Z" fill="#348AE0"/>
+                        <path d="M135 155.833L243 95V186L216 170.5V143L162 171V233L190 216.5L217 232L135 279V155.833Z" fill="#348AE0"/>
+                    </svg>
+                    <nav>
+                        <ul>
+                            <li><a href="/">Início</a></li>
+                            <li><a href="/sobre">Sobre</a></li>
+                            <li><a href="/blog">Blog</a></li>
+                            <li><a href="/contato">Contato</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <hr />
+                
+                <div>
+                    <p>Template Website &copy; 2024 | Todos os direitos reservados.</p>
+                    <div class="rodape-redes-sociais">
+                        <span>Siga-nos: </span>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="rodape-dev">
+                <span>Desenvolvido por <a href="">Mirage</a></span>
+            </div>
+        </footer>
     </body>
 </html>
