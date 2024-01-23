@@ -2,6 +2,10 @@ from django.shortcuts import render, get_object_or_404
 from .models import Postagem, Categoria
 from .forms import ContatoForm
 
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+
 def pagina_inicio(request):
     ultima_postagem = Postagem.objects.order_by('-criado_em').first()
     ultimas_postagens = Postagem.objects.order_by('-criado_em')[:4]
@@ -53,3 +57,32 @@ def pagina_contato(request):
         form = ContatoForm()
 
     return render(request, 'pages/pagina_contato.html', {'form': form})
+
+
+def pagina_entrar(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('pagina_inicio')
+    else:
+        form = AuthenticationForm()
+
+    return render(request, 'pages/pagina_entrar.html', {'form': form})
+
+
+def pagina_registrar_se(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('pagina_inicio')
+    else:
+        form = UserCreationForm()
+
+    return render(request, 'pages/registrar_se.html', {'form': form})

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_content %}
+    <!-- Seção Sobre -->
+    <section id="home" class="banner-conteiner" style="border-top: 1px solid #E0E8F0;">
+        <div style="display: flex; gap: 50px; flex-direction: column;">
+            <div>
+                <h2 style="font-size: 3em; margin: 0;">Registrar-se</h2>
+                <h3 style="font-size: 1.5em; margin: 0;">Como nossa história começou</h3>
+            </div>
+            <div>
+                <form method="post" action="{% url 'registrar_se' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Registrar</button>
+                </form>
+            </div>
+        </div> 
+    </section>
+{% endblock page_content %}
