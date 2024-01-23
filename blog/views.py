@@ -3,7 +3,7 @@ from .models import Postagem
 from .forms import ContatoForm
 
 def pagina_inicio(request):
-    ultimas_postagens = Postagem.objects.order_by('-criado_em')[:3]
+    ultimas_postagens = Postagem.objects.order_by('-criado_em')[:4]
     return render(request, 'pages/pagina_inicio.html', {'ultimas_postagens': ultimas_postagens})
 
 

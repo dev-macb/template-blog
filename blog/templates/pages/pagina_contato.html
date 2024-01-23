@@ -1,12 +1,19 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block page_content %}
-    <section>
-        <h2>Contato</h2>
-        <form method="post" action="">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Enviar</button>
-        </form>
+<!-- Seção NewsLetter -->
+    <section id="newsletter" style="margin: 100px 0;">
+        <div class="secao-conteudo">
+            <header>
+                <h2 style="font-size: 3em;">Contato</h2>
+                <h3 style="font-size: 1.5em; color: #90B7DE; font-weight: normal;">Mande uma mensagem e entraremos em contato com você</h3>    
+            </header>
+            <form method="post" action="" style="display: flex; flex-direction: column; align-items: center; gap: 20px; background-color: #0D1114; border-radius: 10px; padding: 20px;">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="butao-primario" type="submit">Enviar</button>
+            </form>
+        </div>
     </section>
 {% endblock %}

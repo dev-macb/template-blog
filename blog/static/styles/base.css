@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body {
@@ -16,6 +17,62 @@ body {
     background-color: #06080A;
 }
 
+section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+button { 
+    font-size: 1.1em; 
+}
+
+
+.butao-primario {
+    color: #06080A; 
+    transition: .3s;
+    font-weight: bold;
+    padding: 10px 40px;
+    background-color: #90B7DE; 
+    border: 1px solid #90B7DE; 
+    border-radius: 10px;
+}
+
+.butao-primario:hover {
+    transform: translateY(-10px);
+    box-shadow: 0  5px 15px 0 #348AE0, 0 15px 50px 0 #0D2032;
+}
+
+.butao-secundario {
+    border-radius: 10px;
+    color: #E0E8F0; 
+    transition: .3s;
+    padding: 10px 40px;
+    background-color: #0D2032; 
+    border: 1px solid #0D2032; 
+    font-weight: bold;
+}
+
+.butao-secundario:hover {
+    transform: translateY(-5px);
+}
+
+.butao-destaque {
+    padding: 10px 40px;
+    color: #90B7DE; 
+    font-weight: normal;
+    padding: 10px 40px;
+    border: 1px solid #90B7DE; 
+    border-radius: 10px;
+    transition: .5s;
+}
+
+.butao-destaque:hover {
+    color: #348AE0; 
+    border: 1px solid #348AE0; 
+    background-color: #0D2032;
+    transform: translateY(-5px);
+}
 
 /* -------------------- Cabeçalho -------------------- */
 .cabecalho-conteiner {

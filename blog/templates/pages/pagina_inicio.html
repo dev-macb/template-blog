@@ -1,15 +1,215 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block page_content %}
-    <h1>Início</h1>
-
-    <!-- Adicione aqui o código para o banner e o carrossel -->
-
-    <h2>Últimas Postagens:</h2>
-    {% for postagem in ultimas_postagens %}
-        <div style="background-color: #ccc;">
-            <h3>{{ postagem.titulo }}</h3>
-            <p>{{ postagem.mensagem }}</p>
+    <!-- Banner de Apresentação -->
+    <section id="inicio" class="banner-conteiner">
+        <div class="banner-conteudo">
+            <div>
+                <a href="/blog" class="butao-ultimo-post">📰 Ver última postagem →</a>
+            </div>
+            <div>
+                <h1 style="font-size: 3.5em; margin: 0;">Bem-vindo ao Nosso Site</h1>
+                <h2 style="font-size: 2.5em; margin: 0;">Template Website</h2>
+            </div>
+            <div>
+                <p style="font-size: 1.2em;">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. <br>
+                    Rerum voluptate minima accusantium. Vero inventore eum alias <br>
+                    nesciunt consequatur temporibus nobis consequuntur iusto rerum <br>
+                    iste eius, atque adipisci deserunt! Doloribus, ipsum?
+                </p>
+            </div>
+            <div style="gap: 20px; flex-direction: row;">
+                <a href="#contato" class="butao-secundario">Entrar em Contato</a>
+                <a href="/blog" class="butao-primario">Blog</a>
+            </div>
+            <div class="ver-mais" style="gap: 20px; align-items: center; flex-direction: row;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 10.8C5 8.18126 5 6.87188 5.58944 5.91001C5.91926 5.37178 6.37178 4.91926 6.91001 4.58944C7.87188 4 9.18126 4 11.8 4H12.2C14.8187 4 16.1281 4 17.09 4.58944C17.6282 4.91926 18.0807 5.37178 18.4106 5.91001C19 6.87188 19 8.18126 19 10.8V14C19 14.9288 19 15.3933 18.9487 15.7832C18.5942 18.4756 16.4756 20.5942 13.7832 20.9487C13.3933 21 12.9288 21 12 21V21C11.0712 21 10.6067 21 10.2168 20.9487C7.52444 20.5942 5.40579 18.4756 5.05133 15.7832C5 15.3933 5 14.9288 5 14V10.8Z" stroke="#E0E8F0" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M12 4V9" stroke="#E0E8F0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span style="font-size: .8em;">Role para explorar mais seções</span>
+            </div>
         </div>
-    {% endfor %}
+        <div class="banner-conteudo" style="align-items: center;">
+            <svg class="cubo-inicio" width="270" height="310" viewBox="0 0 270 310" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M135 0L269.5 76.5L270 232L162 171L191 156L243 186V95L163 48V108L135 125V0Z" fill="#0D2032"/>
+                <path d="M27 95L135 155.706V279L55 232L80 216.5L108 232.706V171L54.5 139.706V169.046L27 185V95Z" fill="#0D2032"/>
+                <path d="M107 48V78L81.5 92.5L107 109L135 125L188.5 92.5L163 78V48L243 95L135 156L27 95L107 48Z" fill="#90B7DE"/>
+                <path d="M108 171V200L55 232L135 279L217 232L162 200V171L270 232L135.5 309.5L0 232L108 171Z" fill="#90B7DE"/>
+                <path d="M0 77L135 0V125L107 109V48L27 95V185L79.5 154.5L108 171L0 232V77Z" fill="#348AE0"/>
+                <path d="M135 155.833L243 95V186L216 170.5V143L162 171V233L190 216.5L217 232L135 279V155.833Z" fill="#348AE0"/>
+            </svg>
+        </div>
+    </section>
+
+
+    <!-- Seção Últimas Postagens -->
+    <section id="postagens">
+        <div class="secao-conteudo">
+            <header>
+                <h2 style="font-size: 3em;">Postagens</h2>
+                <h3 style="font-size: 1.5em; color: #90B7DE; font-weight: normal;">Explorando tópicos fascinantes para mentes curiosas</h3>    
+            </header>
+            <div class="postagens">
+                {% for postagem in ultimas_postagens %}
+                    <div class="postagem">
+                        <img class="imagem"></img>
+                        <h4>{{ postagem.titulo }}</h4>
+                        <div>
+                            <span style="background-color: #0D2032; padding: 3px 10px; border-radius: 30px; border: 1px solid #348AE0; color: #348AE0;">{{ postagem.categoria }}</span>
+                            <span style="font-size: .8em; color: #90B7DE;">{{ postagem.criado_em }}</span>
+                        </div>
+                    </div>
+                {% endfor %}     
+            </div>
+            <div>
+                <a href="/blog" class="butao-destaque">Ver Mais</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Seção Sobre -->
+    <section id="sobre">
+        <div style="margin: 100px 0; display: flex; width: 100%; justify-content: center; flex-direction: column; align-items: center; gap: 10px;">
+            <div style="display: flex; gap: 10px; width: 100%;">
+                <div style="gap: 50px;  background-color: #90B7DE; width: 80%; height: 300px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                    <svg width="81" height="93" viewBox="0 0 270 310" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M135 0L269.5 76.5L270 232L162 171L191 156L243 186V95L163 48V108L135 125V0Z" fill="#0D2032"/>
+                        <path d="M27 95L135 155.706V279L55 232L80 216.5L108 232.706V171L54.5 139.706V169.046L27 185V95Z" fill="#0D2032"/>
+                        <path d="M107 48V78L81.5 92.5L107 109L135 125L188.5 92.5L163 78V48L243 95L135 156L27 95L107 48Z" fill="#90B7DE"/>
+                        <path d="M108 171V200L55 232L135 279L217 232L162 200V171L270 232L135.5 309.5L0 232L108 171Z" fill="#90B7DE"/>
+                        <path d="M0 77L135 0V125L107 109V48L27 95V185L79.5 154.5L108 171L0 232V77Z" fill="#348AE0"/>
+                        <path d="M135 155.833L243 95V186L216 170.5V143L162 171V233L190 216.5L217 232L135 279V155.833Z" fill="#348AE0"/>
+                    </svg>
+                    <p style="width: 50%; color: #0D1114; font-size: 1.5em;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum quis aliquam nobis labore illo, adipisci assumenda, nisi beatae ipsum facilis provident corporis fugit. Magnam, culpa quasi dolorum repellat provident perferendis?</p>
+                </div>
+                <div style="background-color: #1F568D; width: 20%; height: 300px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                    <span style="font-size: 4em; font-weight: bold;">999</span>
+                    <p style="font-size: 1.2em;">Postagens Realizadas!</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 10px; width: 100%;">
+                <div style="gap: 10px; background-color: #0D2032; width: 60%; height: 200px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                    <p style="text-align: center; font-size: 1.5em; color: #E0E8F0; font-weight: bold;">
+                        Explore um conjunto abrangente <br>
+                        de serviços projetados para atender às suas expectativas
+                    </p>
+                    <a href="" style="text-align: center; font-size: 1.2em; color: #E0E8F0; border-bottom: 1px solid #E0E8F0;">Ver Mais</a>
+                </div>
+                <div style="gap: 10px; background-color: #348AE0; width: 40%; height: 200px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                    <p style="text-align: center; font-size: 1.2em; color: #0D1114; font-weight: bold;">Aprofunde-se com nossas <br>postagens envolventes e informativas</p>
+                    <a href="" style="text-align: center; font-size: 1.2em; color: #0D1114; border-bottom: 1px solid #0D1114;">Explorar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Seção de Serviços -->
+    <section id="contato">
+        <div class="secao-conteudo">
+            <header>
+                <h2 style="font-size: 3em;">Contato</h2>
+                <h3 style="font-size: 1.5em; color: #90B7DE; font-weight: normal;">Mande uma mensagem e entraremos em contato com você</h3>    
+            </header>
+            <div style="display: flex; width: 80%; justify-content: space-between; align-items: center;">
+                <div style="display: flex; gap: 100px; flex-direction: column;">
+                    <div style="display: flex; align-items: center; gap: 50px;">
+                        <svg width="81" height="93" viewBox="0 0 270 310" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M135 0L269.5 76.5L270 232L162 171L191 156L243 186V95L163 48V108L135 125V0Z" fill="#0D2032"/>
+                            <path d="M27 95L135 155.706V279L55 232L80 216.5L108 232.706V171L54.5 139.706V169.046L27 185V95Z" fill="#0D2032"/>
+                            <path d="M107 48V78L81.5 92.5L107 109L135 125L188.5 92.5L163 78V48L243 95L135 156L27 95L107 48Z" fill="#90B7DE"/>
+                            <path d="M108 171V200L55 232L135 279L217 232L162 200V171L270 232L135.5 309.5L0 232L108 171Z" fill="#90B7DE"/>
+                            <path d="M0 77L135 0V125L107 109V48L27 95V185L79.5 154.5L108 171L0 232V77Z" fill="#348AE0"/>
+                            <path d="M135 155.833L243 95V186L216 170.5V143L162 171V233L190 216.5L217 232L135 279V155.833Z" fill="#348AE0"/>
+                        </svg>
+                        <div style="display: flex; gap: 10px; flex-direction: column;">
+                            <h4 style="font-size: 2em;">Localização</h4>
+                            <a href="" style="color: #E0E8F0; font-size: 1.2em;">Rua Aresta, nº 8, Bairro dos Vertices</a>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 50px;">
+                        <svg width="81" height="93" viewBox="0 0 270 310" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M135 0L269.5 76.5L270 232L162 171L191 156L243 186V95L163 48V108L135 125V0Z" fill="#0D2032"/>
+                            <path d="M27 95L135 155.706V279L55 232L80 216.5L108 232.706V171L54.5 139.706V169.046L27 185V95Z" fill="#0D2032"/>
+                            <path d="M107 48V78L81.5 92.5L107 109L135 125L188.5 92.5L163 78V48L243 95L135 156L27 95L107 48Z" fill="#90B7DE"/>
+                            <path d="M108 171V200L55 232L135 279L217 232L162 200V171L270 232L135.5 309.5L0 232L108 171Z" fill="#90B7DE"/>
+                            <path d="M0 77L135 0V125L107 109V48L27 95V185L79.5 154.5L108 171L0 232V77Z" fill="#348AE0"/>
+                            <path d="M135 155.833L243 95V186L216 170.5V143L162 171V233L190 216.5L217 232L135 279V155.833Z" fill="#348AE0"/>
+                        </svg>
+                        <div style="display: flex; gap: 10px; flex-direction: column;">
+                            <h4 style="font-size: 2em;">Telefone</h4>
+                            <div style="display: flex; flex-direction: column;">
+                                <a href="" style="color: #E0E8F0; font-size: 1.2em;">(62) 9 1234 - 1234</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 50px;">
+                        <svg width="81" height="93" viewBox="0 0 270 310" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M135 0L269.5 76.5L270 232L162 171L191 156L243 186V95L163 48V108L135 125V0Z" fill="#0D2032"/>
+                            <path d="M27 95L135 155.706V279L55 232L80 216.5L108 232.706V171L54.5 139.706V169.046L27 185V95Z" fill="#0D2032"/>
+                            <path d="M107 48V78L81.5 92.5L107 109L135 125L188.5 92.5L163 78V48L243 95L135 156L27 95L107 48Z" fill="#90B7DE"/>
+                            <path d="M108 171V200L55 232L135 279L217 232L162 200V171L270 232L135.5 309.5L0 232L108 171Z" fill="#90B7DE"/>
+                            <path d="M0 77L135 0V125L107 109V48L27 95V185L79.5 154.5L108 171L0 232V77Z" fill="#348AE0"/>
+                            <path d="M135 155.833L243 95V186L216 170.5V143L162 171V233L190 216.5L217 232L135 279V155.833Z" fill="#348AE0"/>
+                        </svg>
+                        <div style="display: flex; gap: 10px; flex-direction: column;">
+                            <h4 style="font-size: 2em;">E-mail</h4>
+                            <a href="" style="color: #E0E8F0; font-size: 1.2em;">templatewebsite@email.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <form action="" class="formulario-contato">
+                    <div class="formulario-contato-entrada">
+                        <span>Nome</span>
+                        <input />
+                    </div>
+                    <div style="display: flex; gap: 20px;">
+                        <div class="formulario-contato-entrada">
+                            <span>Telefone</span>
+                            <input />
+                        </div>
+                        <div class="formulario-contato-entrada">
+                            <span>E-mail</span>
+                            <input />
+                        </div>
+                    </div>
+                    <div class="formulario-contato-entrada">
+                        <span">Assunto</span>
+                        <select class="selecao" name="" id="">
+                            <option value="1" disabled selected></option>
+                            <option value="1">Lorem ipsum</option>
+                            <option value="2">Eum incidunt nemo</option>
+                            <option value="3">Molestias, labore iusto</option>
+                        </select>
+                    </div>
+                    <div class="formulario-contato-entrada">
+                        <span style="margin-bottom: 10px;">Mensagem</span>
+                        <textarea name="" id="" cols="30" rows="10" style="background-color: transparent; border: 1px solid #348AE0; border-radius: 10px; padding: 20px; color: #E0E8F0; font-size: 1.2em; outline: none;"></textarea>
+                    </div>
+                    <div class="formulario-contato-entrada">
+                        <button style="background-color: #90B7DE; border: 1px solid #90B7DE; padding: 10px 40px; border-radius: 10px; color: #06080A; font-size: 1.1em; font-weight: bold;">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Seção NewsLetter -->
+    <section id="newsletter" style="margin: 100px 0;">
+        <div class="secao-conteudo">
+            <header>
+                <h2 style="font-size: 3em;">Sua jornada não deve terminar aqui</h2>
+                <h3 style="font-size: 1.5em; color: #90B7DE; font-weight: normal;">Siga-me nas redes sociais para ficar ligado em mais projetos</h3>    
+            </header>
+            <div>
+                <button class="butao-primario">Inscrever-se</button>
+            </div>
+        </div>
+    </section>
 {% endblock %}
