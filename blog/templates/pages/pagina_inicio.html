@@ -1,9 +1,15 @@
-<h1>Página Inicial</h1>
+{% extends 'base.html' %}
 
-<!-- Adicione aqui o código para o banner e o carrossel -->
+{% block page_content %}
+    <h1>Página Inicial</h1>
 
-<h2>Últimas Postagens:</h2>
-{% for postagem in ultimas_postagens %}
-    <h3>{{ postagem.titulo }}</h3>
-    <p>{{ postagem.mensagem }}</p>
-{% endfor %}
+    <!-- Adicione aqui o código para o banner e o carrossel -->
+
+    <h2>Últimas Postagens:</h2>
+    {% for postagem in ultimas_postagens %}
+        <div style="background-color: #ccc;">
+            <h3>{{ postagem.titulo }}</h3>
+            <p>{{ postagem.mensagem }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
