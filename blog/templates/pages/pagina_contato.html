@@ -1,1 +1,12 @@
-<h1>Contato</h1>
+{% extends 'base.html' %}
+
+{% block page_content %}
+    <section>
+        <h2>Entre em Contato</h2>
+        <form method="post" action="">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+{% endblock %}
