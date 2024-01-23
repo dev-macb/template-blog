@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_content %}
+    <!-- Seção Voltar às Postagens -->
+    <section style="margin: 50px 0;">
+        <a href="/blog" class="butao-voltar">← Voltar às postagens</a>
+    </section>
+
+
+    <!-- Seção NewsLetter -->
+    <section id="newsletter">
+        <div class="secao-conteudo">
+            <header>
+                <h2 style="font-size: 3em;">{{ postagem.titulo }}</h2>
+                <h3 style="font-size: 1.5em; color: #90B7DE; font-weight: normal;">{{ postagem.categoria }}</h3>    
+            </header>
+            <div style="flex-direction: column;">
+                <p style="font-size: 1.2em;">{{ postagem.mensagem }}</p>
+                <hr style="margin: 20px 0;">
+                <div>
+                    <p>Criado em: {{ postagem.criado_em }}</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Seção NewsLetter -->
+    <section id="newsletter" style="margin: 200px 0;">
+        <div class="secao-conteudo">
+            <header>
+                <h2 style="font-size: 3em;">Sua jornada não deve terminar aqui</h2>
+                <h3 style="font-size: 1.5em; color: #90B7DE; font-weight: normal;">Siga-me nas redes sociais para ficar ligado em mais projetos</h3>    
+            </header>
+            <div>
+                <button class="butao-primario">Inscrever-se</button>
+            </div>
+        </div>
+    </section>
+{% endblock %}

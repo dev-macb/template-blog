@@ -6,7 +6,7 @@
     <section id="inicio" class="banner-conteiner">
         <div class="banner-conteudo">
             <div>
-                <a href="/blog" class="butao-ultimo-post">📰 Ver última postagem →</a>
+                <a href="{% url 'pagina_visualizar_postagem' ultima_postagem.id %}" class="butao-ultimo-post">📰 Ver última postagem →</a>
             </div>
             <div>
                 <h1 style="font-size: 3.5em; margin: 0;">Bem-vindo ao Nosso Site</h1>
@@ -47,24 +47,26 @@
 
     <!-- Seção Últimas Postagens -->
     <section id="postagens">
-        <div class="secao-conteudo">
+        <div class="secao-blog-conteudo">
             <header>
                 <h2 style="font-size: 3em;">Postagens</h2>
                 <h3 style="font-size: 1.5em; color: #90B7DE; font-weight: normal;">Explorando tópicos fascinantes para mentes curiosas</h3>    
             </header>
             <div class="postagens">
-                {% for postagem in ultimas_postagens %}
-                    <div class="postagem">
-                        <img class="imagem"></img>
-                        <h4>{{ postagem.titulo }}</h4>
-                        <div>
-                            <span style="background-color: #0D2032; padding: 3px 10px; border-radius: 30px; border: 1px solid #348AE0; color: #348AE0;">{{ postagem.categoria }}</span>
-                            <span style="font-size: .8em; color: #90B7DE;">{{ postagem.criado_em }}</span>
+                {% for postagem in postagens_recentes %}
+                    <a href="{% url 'pagina_visualizar_postagem' postagem.id %}">
+                        <div class="postagem {% if postagem.premium %}premium{% endif %}">
+                            <img class="imagem"></img>
+                            <h4>{{ postagem.titulo }}</h4>
+                            <div>
+                                <span style="background-color: #0D2032; padding: 3px 10px; border-radius: 30px; border: 1px solid #348AE0; color: #348AE0;">{{ postagem.categoria }}</span>
+                                <span style="font-size: .8em; color: #90B7DE;">{{ postagem.criado_em }}</span>
+                            </div>
                         </div>
-                    </div>
-                {% endfor %}     
+                    </a>
+                {% endfor %}    
             </div>
-            <div>
+            <div style="display: flex; align-items: center; justify-content: center;">
                 <a href="/blog" class="butao-destaque">Ver Mais</a>
             </div>
         </div>
@@ -87,21 +89,26 @@
                     <p style="width: 50%; color: #0D1114; font-size: 1.5em;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum quis aliquam nobis labore illo, adipisci assumenda, nisi beatae ipsum facilis provident corporis fugit. Magnam, culpa quasi dolorum repellat provident perferendis?</p>
                 </div>
                 <div style="background-color: #1F568D; width: 20%; height: 300px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-direction: column;">
-                    <span style="font-size: 4em; font-weight: bold;">999</span>
+                    <span style="font-size: 4em; font-weight: bold;">{{ numero_postagens }}</span>
                     <p style="font-size: 1.2em;">Postagens Realizadas!</p>
                 </div>
             </div>
             <div style="display: flex; gap: 10px; width: 100%;">
                 <div style="gap: 10px; background-color: #0D2032; width: 60%; height: 200px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-direction: column;">
-                    <p style="text-align: center; font-size: 1.5em; color: #E0E8F0; font-weight: bold;">
-                        Explore um conjunto abrangente <br>
-                        de serviços projetados para atender às suas expectativas
+                    <p style="text-align: center; font-size: 1.5em; color: #E0E8F0;">
+                        Existem <strong>{{ numero_categorias }}</strong>
+                        {% if numero_categorias == 1 %}
+                            categoria
+                        {% else %}
+                            categorias
+                        {% endif %}
+                        no nosso blog
                     </p>
                     <a href="" style="text-align: center; font-size: 1.2em; color: #E0E8F0; border-bottom: 1px solid #E0E8F0;">Ver Mais</a>
                 </div>
                 <div style="gap: 10px; background-color: #348AE0; width: 40%; height: 200px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-direction: column;">
                     <p style="text-align: center; font-size: 1.2em; color: #0D1114; font-weight: bold;">Aprofunde-se com nossas <br>postagens envolventes e informativas</p>
-                    <a href="" style="text-align: center; font-size: 1.2em; color: #0D1114; border-bottom: 1px solid #0D1114;">Explorar</a>
+                    <a href="/blog" style="text-align: center; font-size: 1.2em; color: #0D1114; border-bottom: 1px solid #0D1114;">Explorar</a>
                 </div>
             </div>
         </div>

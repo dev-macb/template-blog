@@ -3,33 +3,20 @@
 
 {% block page_content %}
     <!-- Secao de Todas as Postagens -->
-    <section id="postagens">
+    <section id="postagens" style="margin-top: 100px;">
         <div class="secao-blog-conteudo">
             <header style="display: flex; flex-direction: column; align-items: center;">
                 <h2 style="font-size: 3em;">Postagens</h2>
                 <h3 style="font-size: 1.5em; color: #90B7DE; font-weight: normal;">Explorando tópicos fascinantes para mentes curiosas</h3>    
-                <div style="display: flex; align-items: center; gap: 20px; margin: 20px 0;">
-                    <input style="padding: 0 20px; color: #E0E8F0; min-width: 700px; height: 40px; font-size: 1em; border-radius: 10px; background-color: transparent; border: 1px solid #348AE0; outline: none;"/>
-                    <button style="background-color: #90B7DE; border: 1px solid #90B7DE; padding: 10px 40px; border-radius: 10px; color: #06080A; font-size: 1.1em; font-weight: bold;">Buscar</button>
-                </div>
+                <form method="GET" action="{% url 'pagina_blog' %}" style="display: flex; align-items: center; gap: 20px; margin: 20px 0;">
+                    <input name="filtro" value="{{ query }}" style="padding: 0 20px; color: #E0E8F0; min-width: 700px; height: 40px; font-size: 1em; border-radius: 10px; background-color: transparent; border: 1px solid #348AE0; outline: none;"/>
+                    <button type="submit" style="background-color: #90B7DE; border: 1px solid #90B7DE; padding: 10px 40px; border-radius: 10px; color: #06080A; font-size: 1.1em; font-weight: bold;">Buscar</button>
+                </form>
             </header>
             <div class="postagens">
-                {% for postagem in postagens_basicas %}
-                    <div class="postagem">
-                        <img class="imagem"></img>
-                        <h4>{{ postagem.titulo }}</h4>
-                        <div>
-                            <span style="background-color: #0D2032; padding: 3px 10px; border-radius: 30px; border: 1px solid #348AE0; color: #348AE0;">{{ postagem.categoria }}</span>
-                            <span style="font-size: .8em; color: #90B7DE;">{{ postagem.criado_em }}</span>
-                        </div>
-                    </div>
-                {% endfor %}    
-            </div>
-            <hr>
-            {% if postagens_premium %}
-                <div class="postagens">
-                    {% for postagem in postagens_premium %}
-                        <div class="postagem">
+                {% for postagem in postagens %}
+                    <a href="{% url 'pagina_visualizar_postagem' postagem.id %}">
+                        <div class="postagem {% if postagem.premium %}premium{% endif %}">
                             <img class="imagem"></img>
                             <h4>{{ postagem.titulo }}</h4>
                             <div>
@@ -37,6 +24,21 @@
                                 <span style="font-size: .8em; color: #90B7DE;">{{ postagem.criado_em }}</span>
                             </div>
                         </div>
+                    </a>
+                {% endfor %}    
+            </div>
+            <hr>
+            {% if postagens_premium %}
+                <div class="postagens">
+                    {% for postagem in postagens_premium %}
+                        <a href="{% url 'pagina_visualizar_postagem' postagem.id %}" class="postagem">
+                            <img class="imagem"></img>
+                            <h4>{{ postagem.titulo }}</h4>
+                            <div>
+                                <span style="background-color: #0D2032; padding: 3px 10px; border-radius: 30px; border: 1px solid #348AE0; color: #348AE0;">{{ postagem.categoria }}</span>
+                                <span style="font-size: .8em; color: #90B7DE;">{{ postagem.criado_em }}</span>
+                            </div>
+                        </a>
                     {% endfor %}
                 </div>
             {% endif %}

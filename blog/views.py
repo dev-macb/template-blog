@@ -1,10 +1,19 @@
-from django.shortcuts import render
-from .models import Postagem
+from django.shortcuts import render, get_object_or_404
+from .models import Postagem, Categoria
 from .forms import ContatoForm
 
 def pagina_inicio(request):
+    ultima_postagem = Postagem.objects.order_by('-criado_em').first()
     ultimas_postagens = Postagem.objects.order_by('-criado_em')[:4]
-    return render(request, 'pages/pagina_inicio.html', {'ultimas_postagens': ultimas_postagens})
+    numero_categorias = Categoria.objects.count()
+    numero_postagens = Postagem.objects.count()
+
+    return render(request, 'pages/pagina_inicio.html', {
+        'ultima_postagem': ultima_postagem,
+        'postagens_recentes': ultimas_postagens, 
+        'numero_categorias': numero_categorias, 
+        'numero_postagens': numero_postagens
+    })
 
 
 def pagina_sobre(request):
@@ -16,14 +25,21 @@ def pagina_servicos(request):
 
 
 def pagina_blog(request):
-    postagens_basicas = Postagem.objects.filter(premium=False)
+    query = request.GET.get('filtro', '')
+    postagens = Postagem.objects.filter(titulo__icontains=query) if query else Postagem.objects.filter(premium=False)
 
     if request.user.is_authenticated and request.user.usuario.premium:
-        postagens_premium = Postagem.objects.filter(premium=True)
-    else:
-        postagens_premium = []
+        postagens = Postagem.objects.filter(titulo__icontains=query)
 
-    return render(request, 'pages/pagina_blog.html', {'postagens_basicas': postagens_basicas, 'postagens_premium': postagens_premium})
+    return render(request, 'pages/pagina_blog.html', {'postagens': postagens })
+
+
+def pagina_visualizar_postagem(request, id_postagem):
+    postagem = get_object_or_404(Postagem, id=id_postagem)
+
+    return render(request, 'pages/pagina_visualizar_postagem.html', {
+        'postagem': postagem
+    })
 
 
 def pagina_contato(request):
