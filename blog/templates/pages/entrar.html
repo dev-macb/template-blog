@@ -1,0 +1,212 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/pages/entrar.css' %}">
+        
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+            *, *:before, *:after {
+                margin: 0;
+                padding: 0;
+                text-decoration: none;
+                font-family: 'Montserrat', sans-serif;
+            }
+
+            body {
+                color: #E0E8F0;
+                margin: 0;
+                padding: 0;
+                margin-top: 70px;
+                box-sizing: border-box;
+                font-family: 'Montserrat', sans-serif;
+                background-color: #06080A;
+            }
+
+            .cabecalho-conteiner {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 70px;
+                z-index: 100;
+                display: flex;
+                color: #E0E8F0;
+                align-items: center;
+                justify-content: center;
+                background-color: #06080A;
+                border-bottom: 1px solid #0D2032;
+            }
+            .cabecalho-conteudo-entrar {
+                width: 80%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .rodape-conteiner {
+                width: 100%; 
+                display: flex; 
+                align-items: center; 
+                flex-direction: column; 
+                background-color: #06080A; 
+            }
+
+            .rodape-conteudo {
+                width: 80%; 
+                display: flex;
+                flex-direction: column;
+            }
+
+            .rodape-conteudo div {
+                display: flex; 
+                align-items: center; 
+                justify-content: space-between;
+            }
+
+            .rodape-conteudo div nav ul {
+                gap: 30px;
+                display: flex;
+                list-style: none;
+            }
+
+            .rodape-conteudo div nav li a {
+                color: #CCCCCC;
+                font-size: 1.2em;
+                font-weight: normal;
+                text-decoration: none;
+            }
+
+            .rodape-conteudo nav li:hover a {
+                color: #FFFFFF;
+            }
+
+            .rodape-conteudo hr {
+                margin: 20px 0;
+                border: 1px solid #E0E8F0;
+            }
+
+            .rodape-redes-sociais {
+            display: flex; 
+            align-items: center; 
+            gap: 20px;
+        }
+
+        .rodape-redes-sociais div {
+            display: flex; width: 50px; height: 50px; background-color: #90B7DE; border-radius: 10px;
+        }
+
+        .rodape-dev {
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            height: 30px; 
+            background-color: #0D1114; 
+            width: 100%;
+        }
+
+        .rodape-dev span a {
+            color: #E0E8F0;
+        }
+
+        .rodape-dev span a:hover {
+            color: #348AE0;
+        }
+
+
+        </style>
+        <title>Template Blog</title>
+    </head>
+
+    <body>
+        <header class="cabecalho-conteiner">
+            <div class="cabecalho-conteudo-entrar" style="justify-content: center;">
+                <svg width="40" height="46" viewBox="0 0 270 310" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M135 0L269.5 76.5L270 232L162 171L191 156L243 186V95L163 48V108L135 125V0Z" fill="#0D2032"/>
+                    <path d="M27 95L135 155.706V279L55 232L80 216.5L108 232.706V171L54.5 139.706V169.046L27 185V95Z" fill="#0D2032"/>
+                    <path d="M107 48V78L81.5 92.5L107 109L135 125L188.5 92.5L163 78V48L243 95L135 156L27 95L107 48Z" fill="#90B7DE"/>
+                    <path d="M108 171V200L55 232L135 279L217 232L162 200V171L270 232L135.5 309.5L0 232L108 171Z" fill="#90B7DE"/>
+                    <path d="M0 77L135 0V125L107 109V48L27 95V185L79.5 154.5L108 171L0 232V77Z" fill="#348AE0"/>
+                    <path d="M135 155.833L243 95V186L216 170.5V143L162 171V233L190 216.5L217 232L135 279V155.833Z" fill="#348AE0"/>
+                </svg>
+            </div>
+        </header>
+
+        
+        <main class="principal-conteiner">
+            <div class="principal-conteudo" style="display: flex; min-height: calc(100vh - 70px); flex-direction: column;">
+                <section style="flex: 1; gap: 10vw; display: flex; align-items: center; justify-content: center;">
+                    <div style="display: flex; gap: 20px; flex-direction: column; ">
+                        <h2 style="font-size: 4em; margin: 0; color: #FFFFFF;">Template Blog</h2>
+                        <p style="font-size: 1.5em;">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
+                            Aliquam et eaque vero earum veniam magnam di <br>
+                            expedita distinctio accusamus
+                        </p>
+                    </div>
+
+                    <form className="formulario-entrar-conteiner">
+                        <div className="formulario-entrar-conteudo">
+                            {% csrf_token %}
+                            <div>
+                                <div style="gap: 0;">
+                                    <h3>Entrar no Kairos</h3>
+                                    <p>Preencha com seus dados</p>
+                                    <label for="{{ form.username.id_for_label }}">Usuário</label>
+                                    {{ form.username }}
+                                    {{ form.username.errors }}
+                                </div>
+                                <label for="{{ form.password.id_for_label }}">Senha</label>
+                                {{ form.password }}
+                                {{ form.password.errors }}
+                                <div style="gap: 0;">
+                                    <button>Entrar</button>
+                                    <a href="">Recuperar Senha</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <hr>
+                            <span>ou</span>
+                        </div>
+                        <Divisor texto="ou" cor="#909090" />
+                        
+                        <div className="formulario-entrar-conteudo">
+                            <button>Registrar-se</button>
+                        </div>
+                    </form>
+                </section>
+
+                <footer class="rodape-conteiner">
+                    <div class="rodape-conteudo">
+                        <hr />
+                        <div>
+                            <nav>
+                                <ul>
+                                    <li><a href="/">Início</a></li>
+                                    <li><a href="/sobre">Sobre</a></li>
+                                    <li><a href="/blog">Blog</a></li>
+                                    <li><a href="/contato">Contato</a></li>
+                                </ul>
+                            </nav>
+                            <div class="rodape-redes-sociais">
+                                <span>Siga-nos: </span>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rodape-dev" style="margin-top: 20px;">
+                        <span>Template Blog &copy; 2024 | Todos os direitos reservados.</span>
+                    </div>
+                </footer>
+            </div>
+        </main>
+    </body>
+</html>

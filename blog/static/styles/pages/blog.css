@@ -1,4 +1,9 @@
-/* -------------------- Seção de Apresentação -------------------- */
+/* -------------------- Secao de Todas as Postagens -------------------- */
+.postagens-conteiner {
+    background-color: red;
+}
+
+
 .secao-blog-conteudo {
     gap: 50px;
     width: 100%; 
@@ -11,6 +16,17 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
+}
+
+.cabecalho-pesquisar-blog {
+    margin-top: 20px;
+    background-color: #0D2032;
+    border-radius: 10px;
+    width: calc(100% - 40px);
+    justify-content: space-between;
+    display: flex;
+    padding: 20px;
+    align-items: center;
 }
 
 .postagens {
@@ -52,5 +68,11 @@
 }
 
 .postagem.premium {
-    border: 1px solid #c4af3a;  /* Amarelo - você pode ajustar a cor conforme necessário */
+    border: 1px solid #c4af3a;
+}
+
+
+/* -------------------- Seção NewsLetter -------------------- */
+.bunda {
+    background-color: red;
 }

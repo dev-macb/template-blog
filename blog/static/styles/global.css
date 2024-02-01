@@ -33,27 +33,27 @@ button {
 
 
 .butao-primario {
-    color: #06080A; 
+    color: #E0E8F0; 
     transition: .3s;
     font-weight: bold;
     padding: 10px 40px;
-    background-color: #90B7DE; 
-    border: 1px solid #90B7DE; 
+    background-color: #1F568D; 
+    border: 1px solid #1F568D; 
     border-radius: 10px;
 }
 
 .butao-primario:hover {
     transform: translateY(-10px);
-    box-shadow: 0  5px 15px 0 #348AE0, 0 15px 50px 0 #0D2032;
+    box-shadow: 0  5px 15px 0 #1F568D, 0 15px 50px 0 #0D2032;
 }
 
 .butao-secundario {
     border-radius: 10px;
-    color: #E0E8F0; 
+    color: #0D1114; 
     transition: .3s;
     padding: 10px 40px;
-    background-color: #0D2032; 
-    border: 1px solid #0D2032; 
+    background-color: #90B7DE; 
+    border: 1px solid #90B7DE; 
     font-weight: bold;
 }
 
@@ -88,6 +88,62 @@ button {
     border-bottom: 1px solid #348AE0;
 }
 
+.butao-entrar {
+    color: #348AE0;
+    padding: 5px 30px; 
+    border-radius: 10px;
+    border: 1px solid #348AE0; 
+}
+
+.butao-entrar:hover {
+    background-color: #0D2032;
+}
+
+.cabecalho-menu-butao {
+    position: relative;
+}
+
+.dropdown {
+    top: 100%;
+    right: 0;
+    z-index: 10;
+    width: 300px;
+    padding: 20px;
+    display: flex;
+    position: absolute;
+    border-radius: 10px;
+    border: 1px solid #90B7DE;
+    background-color: #06080A;
+    flex-direction: column;
+    opacity: 0; /* Inicialmente, o dropdown é invisível */
+    pointer-events: none; /* Não recebe eventos do mouse quando invisível */
+    transition: opacity 0.3s ease-in-out; /* Adiciona uma transição suave para a opacidade */
+}
+
+/* Adiciona a classe show-dropdown ao dropdown quando a classe é adicionada via JavaScript */
+.dropdown.show-dropdown {
+    opacity: 1; /* Torna o dropdown visível */
+    pointer-events: auto; /* Permite que o dropdown receba eventos do mouse */
+}
+
+.dropdown-menu {
+    gap: 0px;
+    display: flex; 
+    flex-direction: column; 
+    color: #0D1114;
+}
+
+.dropdown-menu li {
+    width: 100%; 
+    display: flex; 
+    align-items: center; 
+    border-radius: 10px;
+}
+
+.dropdown-menu li:hover {
+    background-color: #0D2032;
+}
+
 /* -------------------- Cabeçalho -------------------- */
 .cabecalho-conteiner {
     position: fixed;
@@ -111,41 +167,45 @@ button {
     justify-content: space-between;
 }
 
-.cabecalho-conteudo a {
-    color: #FFFFFF;
+.cabecalho-logo {
     font-size: 1.5em;
     font-weight: bold;
+    text-decoration: none;
 }
 
-.cabecalho-conteudo nav ul {
+.cabecalho-menu {
+    gap: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.cabecalho-menu ul {
     gap: 30px;
     display: flex;
     list-style: none;
+    align-items: center;
 }
 
-.cabecalho-conteudo nav li a {
-    color: #CCCCCC;
+.cabecalho-menu li {
+    position: relative;
+}
+
+.cabecalho-menu li a {
+    color: #E0E8F0;
     font-size: 1.2em;
     font-weight: normal;
     text-decoration: none;
 }
 
-.cabecalho-conteudo nav li:last-child a {
-    color: #90B7DE;
-    padding: 5px 30px; 
-    border-radius: 10px; 
-    border: 1px solid #90B7DE; 
+.cabecalho-menu li a:hover {
+    color: #FFF;
 }
 
-.cabecalho-conteudo nav li:hover a {
-    color: #FFFFFF;
+.butao-usuario {
+    position: relative;
 }
 
-.cabecalho-conteudo nav li:last-child a:hover {
-    color: #348AE0;
-    border: 1px solid #348AE0;
-    background-color: #0D2032;
-}
+
 
 
 /* -------------------- Principal -------------------- */
@@ -162,7 +222,7 @@ button {
 }
 
 
-/* -------------------- Cabeçalho -------------------- */
+/* -------------------- Rodape -------------------- */
 .rodape-conteiner {
     display: flex; 
     width: 100%; 
@@ -233,3 +293,4 @@ button {
 .rodape-dev span a:hover {
     color: #348AE0;
 }
+

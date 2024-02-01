@@ -7,14 +7,17 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
 def pagina_inicio(request):
-    ultima_postagem = Postagem.objects.order_by('-criado_em').first()
-    ultimas_postagens = Postagem.objects.order_by('-criado_em')[:4]
     numero_categorias = Categoria.objects.count()
     numero_postagens = Postagem.objects.count()
 
-    return render(request, 'pages/pagina_inicio.html', {
-        'ultima_postagem': ultima_postagem,
-        'postagens_recentes': ultimas_postagens, 
+    if request.user.is_authenticated and request.user.usuario.premium:
+        postagens_recentes = Postagem.objects.order_by('-criado_em')[:4]
+    else:
+        postagens_recentes = Postagem.objects.filter(premium=False).order_by('-criado_em')[:4]
+
+    return render(request, 'pages/inicio.html', {
+        'ultima_postagem': postagens_recentes[0],
+        'postagens_recentes': postagens_recentes, 
         'numero_categorias': numero_categorias, 
         'numero_postagens': numero_postagens
     })
@@ -30,12 +33,16 @@ def pagina_servicos(request):
 
 def pagina_blog(request):
     query = request.GET.get('filtro', '')
-    postagens = Postagem.objects.filter(titulo__icontains=query) if query else Postagem.objects.filter(premium=False)
-
+ 
     if request.user.is_authenticated and request.user.usuario.premium:
-        postagens = Postagem.objects.filter(titulo__icontains=query)
+        postagens = Postagem.objects.filter(titulo__icontains=query).order_by('-criado_em')
+    else:
+        postagens = Postagem.objects.filter(titulo__icontains=query, premium=False).order_by('-criado_em')
 
-    return render(request, 'pages/pagina_blog.html', {'postagens': postagens })
+    return render(request, 'pages/blog.html', {
+        'postagens': postagens, 
+        'numero_postagens': len(postagens)
+    })
 
 
 def pagina_visualizar_postagem(request, id_postagem):
@@ -68,11 +75,11 @@ def pagina_entrar(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('pagina_inicio')
+                return redirect('inicio')
     else:
         form = AuthenticationForm()
 
-    return render(request, 'pages/pagina_entrar.html', {'form': form})
+    return render(request, 'pages/entrar.html', {'form': form})
 
 
 def pagina_registrar_se(request):

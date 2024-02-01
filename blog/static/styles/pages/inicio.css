@@ -1,0 +1,283 @@
+/* -------------------- Comuns -------------------- */
+.secao-conteiner {
+    padding: 100px 0;
+}
+
+.secao-conteudo {
+    gap: 50px;
+    width: 100%; 
+    display: flex; 
+    align-items: center; 
+    flex-direction: column; 
+    justify-content: center; 
+}
+
+.secao-conteudo header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.secao-conteudo div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.secao-conteudo h2 {
+    font-size: 3em;
+}
+
+.secao-conteudo h3 {
+    color: #348AE0; 
+    font-size: 1.5em; 
+    font-weight: normal;
+}
+
+
+
+
+/* -------------------- Banner de Apresentação -------------------- */
+.banner-conteiner {
+    height: 600px;
+    background-size: cover;
+}
+
+.banner-conteudo {
+    gap: 50px;
+    width: 50%;
+    display: flex; 
+    flex-direction: column;
+}
+
+.banner-conteudo-linha {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+}
+
+.butao-ultimo-post {
+    display: flex; 
+    font-size: .8em;
+    color: #90B7DE; 
+    padding: 5px 30px; 
+    align-items: center; 
+    border-radius: 10px; 
+    text-decoration: none; 
+    justify-content: center; 
+    background-color: #0D2032; 
+    border: 1px solid #90B7DE; 
+}
+
+.butao-ultimo-post:hover {
+    color: #348AE0; 
+    border: 1px solid #348AE0; 
+}
+
+.ver-mais {
+    display: flex;
+    align-items: center;
+    animation: moverCimaBaixo 2s infinite alternate;
+}
+
+.ver-mais span {
+    cursor: default;
+    font-size: 0.9rem;
+    color: var(--cor-texto-claro);
+}
+
+.cubo-inicio {
+    width: auto;
+    height: auto;
+    max-width: 80%;
+    max-height: 80%;
+    animation:spin 20s linear infinite;
+    -moz-animation:spin 20s linear infinite;
+    -webkit-animation:spin 20s linear infinite;
+}
+
+@keyframes moverCimaBaixo {
+    0% {
+        transform: translateY(0);
+    }
+    90% {
+        transform: translateY(5px);
+    }
+}
+
+@media (max-width: 768px) {
+    .secao-direita-imagem {
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+
+/* -------------------- Seção Últimas Postagens -------------------- */
+.postagens-conteiner {
+    gap: 50px;
+    width: 100%; 
+    display: flex; 
+    flex-direction: column; 
+}
+
+.postagens-conteiner header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.postagens-conteudo {
+    display: grid;
+    gap: 50px 20px;
+    grid-template-columns: repeat(auto-fill, minmax(calc(25% - 20px), 1fr));
+}
+
+.postagem {
+    gap: 20px; 
+    height: 300px; 
+    display: flex; 
+    padding: 10px;
+    border-radius: 10px; 
+    box-sizing: border-box;
+    flex-direction: column; 
+    background-color: #0D1114; 
+    justify-content: space-between; 
+}
+
+.postagem img {
+    width: 100%; 
+    height: 80%; 
+    display: flex; 
+    border-radius: 5px;
+    background-color: #90B7DE; 
+}
+
+.postagem h4 {
+    color: #E0E8F0;
+    font-size: 1.5em; font-weight: normal;
+}
+
+.postagem div {
+    display: flex; 
+    align-items: center;
+    justify-content: space-between; 
+}
+
+.postagem.premium {
+    border: 1px solid #c4af3a;
+}
+
+
+/* -------------------- Seção Sobre -------------------- */
+.sobre-conteudo {
+    gap: 10px;
+    width: 100%; 
+    display: flex; 
+    margin: 100px 0; 
+    align-items: center; 
+    flex-direction: column; 
+    justify-content: center; 
+}
+
+.sobre-conteudo-linha {
+    gap: 10px; 
+    width: 100%;
+    display: flex; 
+}
+
+.sobre-conteudo-coluna {
+    gap: 10px;
+    height: 300px;
+    display: flex;
+    border-radius: 10px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+/* -------------------- Seção de Contato -------------------- */
+.secao-conteudo .contato-conteiner {
+    width: 80%; 
+    display: flex; 
+    align-items: center;
+    justify-content: space-between; 
+}
+
+.secao-conteudo .contato-conteudo {
+    gap: 100px; 
+    display: flex; 
+    flex-direction: column;
+}
+
+.contato-conteudo-linha {
+    gap: 50px;
+    display: flex; 
+    align-items: center; 
+}
+
+.formulario-contato-conteiner {
+    gap: 20px; 
+    display: flex; 
+    padding: 20px; 
+    border-radius: 10px; 
+    flex-direction: column;
+    background-color: #0D2032;
+}
+
+.formulario-contato-entrada {
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario-contato-selecao {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario-contato-entrada input {
+    height: 40px; 
+    outline: none;
+    font-size: 1em; 
+    padding: 0 20px; 
+    color: #E0E8F0; 
+    border-radius: 10px; 
+    border: 1px solid #348AE0;
+    background-color: transparent; 
+}
+
+.formulario-contato-selecao select {
+    color: #E0E8F0; 
+    height: 40px;
+    outline: none;
+    font-size: 1em;
+    cursor: pointer;
+    padding: 0 20px; 
+    border-radius: 10px; 
+    border: 1px solid #348AE0; 
+    background-color: transparent; 
+}
+
+.selecao::-ms-expand {
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #348AE0;
+    background-color: #0D2032;
+}
+
+.formulario-contato-selecao select option {
+    outline: none;
+    font-size: 1.2em;
+    border: 1px solid #348AE0;
+    background-color: #0D2032; 
+}
